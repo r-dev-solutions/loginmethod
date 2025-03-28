@@ -1,0 +1,88 @@
+FarmaNatura API Documentation
+============================
+
+Base URL: https://loginmethod.onrender.com
+
+Authentication
+--------------
+All endpoints except /login require JWT authentication in the Authorization header:
+Authorization: Bearer <your_token>
+
+Endpoints
+---------
+
+1. User Registration
+   - URL: /users
+   - Method: POST
+   - Request Body:
+     {
+       "username": "string (min 3 chars)",
+       "password": "string (min 8 chars)"
+     }
+   - Response: "User created"
+
+2. User Login
+   - URL: /login
+   - Method: POST
+   - Request Body:
+     {
+       "username": "string",
+       "password": "string"
+     }
+   - Response:
+     {
+       "accessToken": "JWT token"
+     }
+
+3. Get All Users
+   - URL: /users
+   - Method: GET
+   - Response:
+     [
+       {
+         "username": "string"
+       },
+       ...
+     ]
+
+4. Update User
+   - URL: /users/:id
+   - Method: PUT
+   - Request Body:
+     {
+       "username": "string (optional)",
+       "password": "string (optional)"
+     }
+   - Response: "User updated"
+
+5. Delete User
+   - URL: /users/:id
+   - Method: DELETE
+   - Response: "User deleted"
+
+Rate Limiting
+------------
+- Login endpoint is rate limited to 100 requests per 15 minutes per IP
+
+Security
+--------
+- All passwords are hashed using bcrypt
+- JWT tokens expire after 15 minutes
+- All sensitive data is encrypted
+- HTTPS enforced
+
+Error Responses
+---------------
+- 400: Bad Request
+- 401: Unauthorized
+- 403: Forbidden
+- 404: Not Found
+- 500: Internal Server Error
+
+Version
+-------
+v1.0.0
+
+Contact
+-------
+For support, contact: support@farmanatura.com
