@@ -1,1 +1,7 @@
+# API Documentation
+api_documentation.txt
+
+# Other common ignores
+node_modules/
 .env
+.DS_Store
